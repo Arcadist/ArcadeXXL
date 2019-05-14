@@ -9,6 +9,10 @@ What do with an unused 46'' TV at the office? Building a full scale Arcade cabin
 - Players 1 - 4 have an arcade joystick
 - https://a360.co/2VDIrvt
 
+## Cabinet
+Sidepanel measurements
+<img src="cabinet.png">
+
 ## Hardware
 - Sony, KDL-46S2000
 - Raspberry Pi 3 Model B+
