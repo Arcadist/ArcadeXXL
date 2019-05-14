@@ -9,6 +9,7 @@ What do with an unused 46'' TV at the office? Building a full scale Arcade cabin
 
 ## Hardware
 - Sony, KDL-46S2000
-- Raspberry Pi 3 Model B+ 
+- Raspberry Pi 3 Model B+
+- Stontronics power supply, output +5.1V, 2.5A
 - SanDisk microSD Ultra 64GB
 - Sanwa Joystick + Push Buttons
