@@ -19,6 +19,9 @@ The LED strip is wired in the following way. Each row has its own power to deal 
 
 112 x 8 = 896 LEDs total
 
+![alt text][circuit]
+[circuit]: circuit.png "Circuit"
+
 ## LED masking ##
 
 There is a 8 x 16 LED grid 3d printed to provide masking between LEDs. It can be downloaded here: 
