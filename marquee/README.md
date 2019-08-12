@@ -29,4 +29,4 @@ There is a 8 x 16 LED grid 3d printed to provide masking between LEDs. It can be
 
 ## Marquee plexi glass ##
 
-The plexi glass was purchased here: http://www.myplexishop.ch/index.php and is of type ...
+The plexi glass was purchased here: http://www.myplexishop.ch/index.php and is of type WH10

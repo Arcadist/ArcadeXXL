@@ -32,7 +32,7 @@ LED_CHANNEL = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 LED_STRIP = ws.WS2812_STRIP
 
 LED_MATRIX_HEIGHT = 1
-LED_MATRIX_WIDTH = 100
+LED_MATRIX_WIDTH = 112
 
 def matrixDraw(strip, x, y, color):
     """Matrix Write"""
