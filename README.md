@@ -12,6 +12,9 @@ What do with an unused 46'' TV at the office? Building a full scale Arcade cabin
 Sidepanel measurements
 <img src="cabinet.png">
 
+## Controllers
+Setup and controll of the buttons ([see](controllers/README.md))
+
 ## Hardware
 - Sony, KDL-46S2000
 - Raspberry Pi 3 Model B+
