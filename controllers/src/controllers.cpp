@@ -167,6 +167,8 @@ void turnOnButton(int buttonNr, int color)
 
 void setup()
 { 
+    Serial.begin(115200);
+
     Serial.println("setup() called");
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
     initialTest();
