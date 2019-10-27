@@ -14,86 +14,89 @@
 #define PLAYER2_COLOR 0x9566AC // purple
 #define PLAYER3_COLOR 0x68BF6F // green
 
-#define PLAYER_SELECT_COLOR CRGB::White // player select 0 - 3
+#define PLAYER_SELECT_COLOR CRGB::White // player select 0, 17, 16, 23
 #define SELECT_COLOR CRGB::White // start, select button
 
 /****************
  * BUTTON layout
  ****************/
+#define SELECT_BTN 14
+#define TBD_BTN 15
+
 // player 1 (start #1)
-const int PLAYER0_SELECT = 0;
+const int PLAYER0_BTN_SELECT = 0;
 //  2 | 4 | 6
 //  1 | 3 | 5
-#define PLAYER0_1 1
-#define PLAYER0_2 2
-#define PLAYER0_3 3
-#define PLAYER0_4 4
-#define PLAYER0_5 5
-#define PLAYER0_6 6
+#define PLAYER0_BTN_1 1
+#define PLAYER0_BTN_2 2
+#define PLAYER0_BTN_3 3
+#define PLAYER0_BTN_4 4
+#define PLAYER0_BTN_5 5
+#define PLAYER0_BTN_6 6
 const int PLAYER0_BUTTONS[NUM_PLAYER_BUTTONS] = {
-    PLAYER0_1,
-    PLAYER0_2,
-    PLAYER0_3,
-    PLAYER0_4,
-    PLAYER0_5,
-    PLAYER0_6
+    PLAYER0_BTN_1,
+    PLAYER0_BTN_2,
+    PLAYER0_BTN_3,
+    PLAYER0_BTN_4,
+    PLAYER0_BTN_5,
+    PLAYER0_BTN_6
 };
 
 // player 2 (start #8)
-const int PLAYER1_SELECT = 7;
+const int PLAYER1_BTN_SELECT = 7;
 //  9 | 11 | 13
 //  8 | 10 | 12
-#define PLAYER1_1 8
-#define PLAYER1_2 9
-#define PLAYER1_3 10
-#define PLAYER1_4 11
-#define PLAYER1_5 12
-#define PLAYER1_6 13
+#define PLAYER1_BTN_1 8
+#define PLAYER1_BTN_2 9
+#define PLAYER1_BTN_3 10
+#define PLAYER1_BTN_4 11
+#define PLAYER1_BTN_5 12
+#define PLAYER1_BTN_6 13
 const int PLAYER1_BUTTONS[NUM_PLAYER_BUTTONS] = {
-    PLAYER1_1,
-    PLAYER1_2,
-    PLAYER1_3,
-    PLAYER1_4,
-    PLAYER1_5,
-    PLAYER1_6
+    PLAYER1_BTN_1,
+    PLAYER1_BTN_2,
+    PLAYER1_BTN_3,
+    PLAYER1_BTN_4,
+    PLAYER1_BTN_5,
+    PLAYER1_BTN_6
 };
 
 // player 3 (start #17)
-const int PLAYER2_SELECT = 16;
+const int PLAYER2_BTN_SELECT = 16;
 // 18 | 20 | 22
 // 17 | 19 | 21
-#define PLAYER2_1 17
-#define PLAYER2_2 18
-#define PLAYER2_3 19
-#define PLAYER2_4 20
-#define PLAYER2_5 21
-#define PLAYER2_6 22
+#define PLAYER2_BTN_1 17
+#define PLAYER2_BTN_2 18
+#define PLAYER2_BTN_3 19
+#define PLAYER2_BTN_4 20
+#define PLAYER2_BTN_5 21
+#define PLAYER2_BTN_6 22
 const int PLAYER2_BUTTONS[NUM_PLAYER_BUTTONS] = {
-    PLAYER2_1,
-    PLAYER2_2,
-    PLAYER2_3,
-    PLAYER2_4,
-    PLAYER2_5,
-    PLAYER2_6
+    PLAYER2_BTN_1,
+    PLAYER2_BTN_2,
+    PLAYER2_BTN_3,
+    PLAYER2_BTN_4,
+    PLAYER2_BTN_5,
+    PLAYER2_BTN_6
 };
 
 // player 4 (start #24)
-const int PLAYER3_SELECT = 23;
+const int PLAYER3_BTN_SELECT = 23;
 // 25 | 27 | 29 
 // 24 | 26 | 28
-#define PLAYER3_1 24
-#define PLAYER3_2 25
-#define PLAYER3_3 26
-#define PLAYER3_4 27
-#define PLAYER3_5 28
-#define PLAYER3_6 29
+#define PLAYER3_BTN_1 24
+#define PLAYER3_BTN_2 25
+#define PLAYER3_BTN_3 26
+#define PLAYER3_BTN_4 27
+#define PLAYER3_BTN_5 28
+#define PLAYER3_BTN_6 29
 const int PLAYER3_BUTTONS[NUM_PLAYER_BUTTONS] = {
-    PLAYER3_1,
-    PLAYER3_2,
-    PLAYER3_3,
-    PLAYER3_4,
-    PLAYER3_5,
-    PLAYER3_6
+    PLAYER3_BTN_1,
+    PLAYER3_BTN_2,
+    PLAYER3_BTN_3,
+    PLAYER3_BTN_4,
+    PLAYER3_BTN_5,
+    PLAYER3_BTN_6
 };
 
 const int RAINBOW_COLOR_PATTERN[] = {
@@ -122,10 +125,10 @@ const int* PLAYER_BUTTONS[NUM_PLAYER_BUTTONS] = {
 };
 
 const int PLAYER_SELECT_BUTTONS[NUM_PLAYERS] = {
-    PLAYER0_SELECT,
-    PLAYER1_SELECT,
-    PLAYER2_SELECT,
-    PLAYER3_SELECT
+    PLAYER0_BTN_SELECT,
+    PLAYER1_BTN_SELECT,
+    PLAYER2_BTN_SELECT,
+    PLAYER3_BTN_SELECT
 };
 
 CRGB leds[NUM_LEDS];
@@ -159,8 +162,6 @@ void turnOnPlayer(int playerNr)
     Serial.print(playerNr, DEC);
     Serial.println(", color = 0x" + String(playerBaseColor, HEX));
     const int* playerButtons = PLAYER_BUTTONS[playerNr];
-    Serial.print("number of buttons: ");
-    Serial.println(sizeof(playerButtons)/sizeof(int *), DEC);
     for (int dot = 0; dot < NUM_PLAYER_BUTTONS; dot++) {
         int playerButtonNr = playerButtons[dot];
         Serial.print("button nr: ");
@@ -190,9 +191,15 @@ void setup()
     Serial.println("setup() called");
     FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
     initialTest();
+    turnOnButton(SELECT_BTN, SELECT_COLOR);
+    turnOnButton(TBD_BTN, SELECT_COLOR);
+    Serial.println("---------------");
     for (int playerNum = 0; playerNum < NUM_PLAYERS; playerNum++) {
+        Serial.print("PLAYER ");
+        Serial.println(playerNum, DEC);
         turnOnButton(PLAYER_SELECT_BUTTONS[playerNum], PLAYER_SELECT_COLOR);
         turnOnPlayer(playerNum);
+        Serial.println("---------------");
         delay(200);
     }
     Serial.println("setup() completed.");

@@ -8,12 +8,12 @@ Displaying button/LED numbering:
 
 | Button # | Comment |
 | --- | --- |
-| 1 - 6 | **Player 1**, Button 1 = Select |
-| 8 - 14 | **Player 2**, Button 8 = Select |
-| 15 | **Hotkey** |
-| 16 | TBD |
-| 17 - 23 | **Player 3**, Button 17 = Select |
-| 24 - 30 | **Player 4**, Button 24 = Select |
+| 0 - 6 | **Player 1**, Button 0 = Select |
+| 7 - 13 | **Player 2**, Button 7 = Select |
+| 14 | **Hotkey** |
+| 15 | TBD |
+| 16 - 22 | **Player 3**, Button 16 = Select |
+| 23 - 29 | **Player 4**, Button 23 = Select |
 
 LEDs are driven by an ESP32 controllerboard using [FastLED](https://github.com/FastLED/FastLED) library.
 
