@@ -1,3 +1,11 @@
+# make sure to enable serial interface on raspi
+# $ sudo raspi-config
+# Intefacing options
+# Serial
+# No (disable login shell over serial)
+# Yes (enable serial port)
+# reboot
+
 import serial
 from time import sleep
 
