@@ -145,9 +145,9 @@ void initialTest()
         Serial.println(dot, DEC);
         leds[dot] = CRGB::Blue;
         FastLED.show();
-        delay(1000);
+        delay(300);
     }
-    delay(5000);
+    delay(2000);
     FastLED.clear();
     Serial.println("initialTest() completed");
 }
@@ -189,7 +189,7 @@ void setup()
     Serial.begin(115200);
 
     Serial.println("setup() called");
-    FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
+    FastLED.addLeds<WS2811, DATA_PIN, GRB>(leds, NUM_LEDS);
     initialTest();
     turnOnButton(SELECT_BTN, SELECT_COLOR);
     turnOnButton(TBD_BTN, SELECT_COLOR);
