@@ -4,6 +4,8 @@ Controllers controllers;
 
 #define INIT "INIT\n"
 #define INIT_OK "INIT_OK\n"
+#define START_GAME "START_GAME"
+#define END_GAME "END_GAME"
 // U2UXD is unused and can be used for the project - reserved PINS TX (=1), RX (=3)
 #define RXD2 16
 #define TXD2 17
@@ -22,13 +24,17 @@ void setup()
 void loop()
 {
   if (Serial2.available() > 0) {
-    Serial.print("data available : ");
+    Serial.print("data available -> ");
     // read the incoming string:
     String request = Serial2.readString();
 
     if (request == INIT) {
         Serial.println("INIT received - sending back INIT_OK");
         Serial2.write(INIT_OK);
+    } else if (request.startsWith(START_GAME)) {
+        Serial.println("START_GAME received : " + request);
+    } else if (request.startsWith(END_GAME)) {
+        Serial.println("END_GAME received : " + request);
     } else {
         Serial.println(">" + request + "<");
     }
