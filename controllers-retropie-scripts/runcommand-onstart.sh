@@ -10,6 +10,5 @@ EMULATOR=$2
 ROM_FILE=$3
 CMD=$3
 
-
 # call python script
 python onStart.py -s ${SYSTEM} -e ${EMULATOR} -r ${ROM_FILE} -c ${CMD}
