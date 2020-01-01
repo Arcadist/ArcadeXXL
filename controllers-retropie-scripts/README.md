@@ -1,10 +1,11 @@
 # Retropie scripts
 
-## Environment variables
-Environment variables are being read by the scripts
-
+## Create package arcadeScripts.tar and copy it from localhost to raspberry pi
 ```
-# serial connection
-SERIAL_PORT = '/dev/ttyS0'
-SERIAL_BAUD = 9600
+$ sh createDist.sh && scp arcadeScripts.tar pi@raspberrypi:~/.
+```
+
+## Unpack arcadeScripts.tar on raspberry pi
+```
+$ sudo tar -vxf arcadeScripts.tar -C /
 ```

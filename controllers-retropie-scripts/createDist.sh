@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Creating package..."
+
 ARCADE_SCRIPTS=arcadeScripts.tar
 
 # extract with

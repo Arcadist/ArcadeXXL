@@ -149,6 +149,10 @@ class Controllers {
          */ 
         void initialTest();
 
+        int getButtonNr(char* pButtonNr);
+
+        u_long getColor(char* pColor);
+
     public:
         void setup(ToggleLedCbFctPtr pToggleLedCbFct);
 
@@ -157,7 +161,12 @@ class Controllers {
         /**
          * turn on button with a specific color
          */
-        void turnOnButton(int buttonNr, int color);
+        void turnOnButton(int buttonNr, u_long color);
+
+        /**
+         * turn on button from a given string
+         */
+        void turnOnButton(char* pStr);
 
         /**
          * clear all LEDs

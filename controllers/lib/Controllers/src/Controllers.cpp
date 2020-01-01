@@ -38,7 +38,7 @@ void Controllers::turnOnPlayer(int playerNr)
 
 // -------------------------------------------------------------------------
 
-void Controllers::turnOnButton(int buttonNr, int color)
+void Controllers::turnOnButton(int buttonNr, u_long color)
 {
     Serial.print("turn on button: ");
     Serial.print(buttonNr, DEC);
@@ -46,6 +46,15 @@ void Controllers::turnOnButton(int buttonNr, int color)
 
     m_leds[buttonNr] = color;
     FastLED.show();
+}
+
+// -------------------------------------------------------------------------
+
+void Controllers::turnOnButton(char* pStr)
+{
+    int buttonNr = getButtonNr(pStr);
+    u_long color = getColor(pStr + (2*sizeof(char)));
+    turnOnButton(buttonNr, color);
 }
 
 // -------------------------------------------------------------------------
@@ -76,6 +85,23 @@ void Controllers::clearAll()
 {
     FastLED.clear();
     FastLED.show();
+}
+
+// -------------------------------------------------------------------------
+
+int Controllers::getButtonNr(char* pButtonNr)
+{
+    return 
+        (((*pButtonNr) - '0') * 10) + 
+        *(pButtonNr + sizeof(char)) - '0'
+    ;
+}
+
+// -------------------------------------------------------------------------
+
+unsigned long int Controllers::getColor(char* pColor)
+{
+    return strtoul(pColor, NULL, 16);
 }
 
 

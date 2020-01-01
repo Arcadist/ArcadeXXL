@@ -12,3 +12,6 @@ PATTERN_START
 
 # end of a pattern
 PATTERN_END
+
+# set color for an individual button
+BUTTON01fefefe

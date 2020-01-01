@@ -8,6 +8,7 @@ Controllers controllers;
 #define END_GAME "END_GAME"
 #define PATTERN_START "PATTERN_START"
 #define PATTERN_END "PATTERN_END"
+#define BUTTON "BUTTON"
 
 // U2UXD is unused and can be used for the project - reserved PINS TX (=1), RX (=3)
 #define RXD2 16
@@ -57,13 +58,7 @@ void loop()
             loadingPattern = 0;
         } else {
             pack* p = (pack*)request.c_str();
-            /*Serial.print("button nr: ");
-            Serial.println(p->buttonNr);
-            int buttonNr = atoi(p->buttonNr);
-            Serial.println(buttonNr, DEC);
-            Serial.print("color: ");
-            Serial.println(p->color);*/
-            //controllers.turnOnButton();
+            controllers.turnOnButton((char*)request.c_str());
         }
     } else {
         if (request == INIT) {
@@ -76,6 +71,9 @@ void loop()
         } else if (request.startsWith(PATTERN_START)) {
             loadingPattern = 1;
             Serial.println("incoming pattern >" + request + "<");
+        } else if (request.startsWith(BUTTON)) {
+            Serial.println("BUTTON received : " + request);
+            controllers.turnOnButton((char*)request.c_str() + strlen(BUTTON));
         } else {
             Serial.println(">" + request + "<");
         }

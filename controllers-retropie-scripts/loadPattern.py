@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 # sends a given patterns over the serial line.
-# the receiving device rocesses and runs the pattern.
+# the receiving device processes and runs the pattern.
 # Example; python loadPattern.py -f ./patterns/testPattern.txt -d
 
 import logging
@@ -9,7 +9,7 @@ import argparse
 from init_serial import initSerial, closeSerial
 import constants
 
-parser = argparse.ArgumentParser(description='Load LED pattern.')
+parser = argparse.ArgumentParser(description='Load LED pattern from a file.')
 parser.add_argument(
     '-d', '--debug',
     help="Print debugging statements",
