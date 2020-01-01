@@ -1,12 +1,10 @@
-import serial
+#!/usr/bin/env python
+# encoding: utf-8
 import logging
 import argparse
 import os
-
-SERIAL_PORT = '/dev/ttyS0'
-SERIAL_BAUD = 9600
-END_GAME = 'END_GAME'
-END = "\n"
+from init_serial import initSerial, closeSerial
+import constants
 
 parser = argparse.ArgumentParser(description='informs ESP32 about the ended game.')
 
@@ -49,11 +47,12 @@ log = logging.getLogger(__name__)
 
 game = os.path.basename(args.rom_file)
 
-def main():
-    ser = serial.Serial(SERIAL_PORT, SERIAL_BAUD, timeout=1)
-    ser.flush()
-    log.info('serial port: %s (%d baud)', ser.name, ser.baudrate)
-    ser.write('END_GAME ' + game + END)
+def main(ser):
+    ser.write('END_GAME ' + game + constants.END)
 
 if __name__ == '__main__':
-    main()
+    ser = initSerial(log)
+    if ser:
+        main(ser)
+        closeSerial(ser)
+    log.info('done.')

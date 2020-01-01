@@ -7,6 +7,8 @@
 extern "C" {
 #endif
 
+typedef void (*ToggleLedCbFctPtr)();
+
 #define NUM_LEDS 30
 #define DATA_PIN 5
 #define NUM_PLAYERS 4
@@ -117,7 +119,8 @@ const int RAINBOW_COLOR_PATTERN[] = {
 };
 
 class Controllers {
-    CRGB leds[NUM_LEDS];
+    CRGB m_leds[NUM_LEDS];
+    ToggleLedCbFctPtr m_pToggleLedCbFct;
 
     const int PLAYER_BASE_COLOR[NUM_PLAYERS] = {
         PLAYER0_COLOR,
@@ -147,7 +150,7 @@ class Controllers {
         void initialTest();
 
     public:
-        void setup();
+        void setup(ToggleLedCbFctPtr pToggleLedCbFct);
 
         void turnOnPlayer(int playerNr);
 
@@ -155,6 +158,11 @@ class Controllers {
          * turn on button with a specific color
          */
         void turnOnButton(int buttonNr, int color);
+
+        /**
+         * clear all LEDs
+         */
+        void clearAll();
 };
 
 #ifdef __cplusplus

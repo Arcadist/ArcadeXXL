@@ -8,8 +8,9 @@ void Controllers::initialTest()
     for (int dot = 0; dot < NUM_LEDS; dot++) {
         Serial.print("button nr: ");
         Serial.println(dot, DEC);
-        leds[dot] = CRGB::Blue;
+        m_leds[dot] = CRGB::Blue;
         FastLED.show();
+        (*m_pToggleLedCbFct)();
         delay(300);
     }
     delay(2000);
@@ -30,7 +31,7 @@ void Controllers::turnOnPlayer(int playerNr)
         int playerButtonNr = playerButtons[dot];
         Serial.print("button nr: ");
         Serial.println(playerButtonNr, DEC);
-        leds[playerButtonNr] = playerBaseColor;
+        m_leds[playerButtonNr] = playerBaseColor;
     }
     FastLED.show();
 }
@@ -43,15 +44,16 @@ void Controllers::turnOnButton(int buttonNr, int color)
     Serial.print(buttonNr, DEC);
     Serial.println(", color = 0x" + String(color, HEX));
 
-    leds[buttonNr] = color;
+    m_leds[buttonNr] = color;
     FastLED.show();
 }
 
 // -------------------------------------------------------------------------
 
-void Controllers::setup()
+void Controllers::setup(ToggleLedCbFctPtr pToggleLedCbFct)
 { 
-    FastLED.addLeds<WS2811, DATA_PIN, GRB>(leds, NUM_LEDS);
+    m_pToggleLedCbFct = pToggleLedCbFct;
+    FastLED.addLeds<WS2811, DATA_PIN, GRB>(m_leds, NUM_LEDS);
     initialTest();
     turnOnButton(SELECT_BTN, SELECT_COLOR);
     turnOnButton(TBD_BTN, SELECT_COLOR);
@@ -62,9 +64,18 @@ void Controllers::setup()
         turnOnButton(PLAYER_SELECT_BUTTONS[playerNum], PLAYER_SELECT_COLOR);
         turnOnPlayer(playerNum);
         Serial.println("---------------");
+        m_pToggleLedCbFct();
         delay(200);
     }
     Serial.println("Controllers::setup() completed.");
+}
+
+// -------------------------------------------------------------------------
+
+void Controllers::clearAll()
+{
+    FastLED.clear();
+    FastLED.show();
 }
 
 
