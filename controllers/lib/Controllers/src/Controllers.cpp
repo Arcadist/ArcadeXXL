@@ -99,7 +99,7 @@ int Controllers::getButtonNr(char* pButtonNr)
 
 // -------------------------------------------------------------------------
 
-unsigned long int Controllers::getColor(char* pColor)
+u_long Controllers::getColor(char* pColor)
 {
     return strtoul(pColor, NULL, 16);
 }
