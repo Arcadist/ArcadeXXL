@@ -48,7 +48,7 @@ if len(color) != 6:
     sys.exit()
 
 def main(ser):
-    line = 'BUTTON ' + '{0:02d}'.format(buttonNr) + color
+    line = 'BUTTON' + '{0:02d}'.format(buttonNr) + color
     log.info('sending >' + line + '<')
     ser.write(line + constants.END)
 
