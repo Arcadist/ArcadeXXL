@@ -62,7 +62,7 @@ void Controllers::turnOnButton(char* pStr)
 void Controllers::setup(ToggleLedCbFctPtr pToggleLedCbFct)
 { 
     m_pToggleLedCbFct = pToggleLedCbFct;
-    FastLED.addLeds<WS2811, DATA_PIN, GRB>(m_leds, NUM_LEDS);
+    FastLED.addLeds<WS2811, DATA_PIN, GRB>(m_leds, NUM_LEDS).setCorrection(TypicalSMD5050);
     initialTest();
     turnOnButton(SELECT_BTN, SELECT_COLOR);
     turnOnButton(TBD_BTN, SELECT_COLOR);
