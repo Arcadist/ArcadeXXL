@@ -8,6 +8,7 @@
             "includePath": [
                 "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/include",
                 "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/src",
+                "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/lib/Controllers/src",
                 "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/.pio/libdeps/esp32dev/FastLED_ID126",
                 "C:/Users/pr/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/pr/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
@@ -101,6 +102,7 @@
                 "path": [
                     "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/include",
                     "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/src",
+                    "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/lib/Controllers/src",
                     "c:/Users/pr/Documents/GitHub/ArcadeXXL/controllers/.pio/libdeps/esp32dev/FastLED_ID126",
                     "C:/Users/pr/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/pr/.platformio/packages/framework-arduinoespressif32/tools/sdk/include/config",
@@ -191,7 +193,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=40003",
+                "PLATFORMIO=40100",
                 "ARDUINO_ESP32_DEV",
                 "ESP32",
                 "ESP_PLATFORM",

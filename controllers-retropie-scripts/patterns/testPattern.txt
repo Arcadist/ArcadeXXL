@@ -1,0 +1,17 @@
+# test pattern which is run over and over
+# lines starting with a pound sign are comments and are skipped
+# empty lines are skipped
+# start of a pattern
+PATTERN_START
+
+# one line represents a button
+# two digits button number, 6 digits hex color
+01ffffff
+02ffffff
+03ffffff
+
+# end of a pattern
+PATTERN_END
+
+# set color for an individual button
+BUTTON01fefefe
