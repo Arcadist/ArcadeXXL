@@ -189,7 +189,7 @@ void setup()
     Serial.begin(115200);
 
     Serial.println("setup() called");
-    FastLED.addLeds<WS2811, DATA_PIN, GRB>(leds, NUM_LEDS);
+    FastLED.addLeds<WS2811, DATA_PIN, GRB>(leds, NUM_LEDS).setCorrection(TypicalSMD5050);
     initialTest();
     turnOnButton(SELECT_BTN, SELECT_COLOR);
     turnOnButton(TBD_BTN, SELECT_COLOR);
