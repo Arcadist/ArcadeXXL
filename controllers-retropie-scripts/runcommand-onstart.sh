@@ -12,3 +12,5 @@ CMD=$3
 
 # call python script
 python onStart.py -s ${SYSTEM} -e ${EMULATOR} -r ${ROM_FILE} -c ${CMD}
+
+pkill -STOP mpg123
