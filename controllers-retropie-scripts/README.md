@@ -51,6 +51,25 @@ Set splashscreen:
 $ sudo ~/RetroPie-Setup/retropie_setup.sh
 ```
 
+# Boot sequence
+```
+# /boot/cmdline.txt - everything on one line (!)
+# turns off raspberry(s) at boot
+logo.nologo
+# hide messages
+quiet
+# hide more messages (redirect boot messages to the third console)
+console=tty3
+# hide even more messages (disable non-critical kernel log messages) (Included with default RetroPie image)
+loglevel=3
+# hide blinking cursor
+vt.global_cursor_default=0
+```
+```
+# /boot/config.txt
+# Disable large rainbow screen on initial boot
+disable_splash=1
+```
 # Background music
 ```
 $ sudo apt-get install mpg123
